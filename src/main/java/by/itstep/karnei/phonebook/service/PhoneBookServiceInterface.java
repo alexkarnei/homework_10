@@ -1,4 +1,4 @@
 package by.itstep.karnei.phonebook.service;
 
-public interface PhoneServiceInterface {
+public interface PhoneBookServiceInterface {
 }

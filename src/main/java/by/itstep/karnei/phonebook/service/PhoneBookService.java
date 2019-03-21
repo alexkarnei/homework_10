@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class PhoneService {
+public class PhoneBookService {
 
     File phoneBook = new File(".txt");
 
