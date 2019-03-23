@@ -21,7 +21,7 @@ public class PhoneBookService implements PhoneBookServiceInterface {
         } else if (file.length() != 0) {
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-           Contact contact1 = (Contact) objectInputStream.readObject();
+            Contact contact1 = (Contact) objectInputStream.readObject();
             if (contact1.getPhoneNumber().equals(contact.getPhoneNumber())) {
                 throw new PhoneNumberAlreadyExistException();
             }
@@ -36,8 +36,8 @@ public class PhoneBookService implements PhoneBookServiceInterface {
             if (file.length() != 0) {
                 FileInputStream fileInputStream = new FileInputStream(file);
                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-                Contact contact1 = createContact((Contact) objectInputStream.readObject());
-                recordContact(contact);
+                Contact contact1 = (Contact) objectInputStream.readObject();
+                recordContact(contact1);
                 objectInputStream.close();
             }
             recordContact(contact);
