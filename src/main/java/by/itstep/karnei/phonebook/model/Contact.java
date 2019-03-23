@@ -1,20 +1,21 @@
 package by.itstep.karnei.phonebook.model;
 
-import java.util.Map;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
-public class Contact {
+public  class Contact implements Serializable{
+    private static final long serialVersionUID = 1L;
     private String name;
     private String surname;
     private String nickName;
-    private PhoneNumber phoneNumber;
+    private List <PhoneNumber> phoneNumber;
     private int bornYear;
     private String eMail;
 
     public Contact() {
     }
 
-    public Contact(String name, String surname, String nickName, PhoneNumber phoneNumber, int bornYear, String eMail) {
+    public  Contact(String name, String surname, String nickName, List<PhoneNumber> phoneNumber, int bornYear, String eMail) {
         this.name = name;
         this.surname = surname;
         this.nickName = nickName;
@@ -47,11 +48,11 @@ public class Contact {
         this.nickName = nickName;
     }
 
-    public PhoneNumber getPhoneNumber() {
+    public List<PhoneNumber> getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
+    public void setPhoneNumber(List<PhoneNumber> phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -69,5 +70,17 @@ public class Contact {
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", bornYear=" + bornYear +
+                ", eMail='" + eMail + '\'' +
+                '}';
     }
 }

@@ -1,10 +1,13 @@
 package by.itstep.karnei.phonebook.model;
 
-public class PhoneNumber {
-    private NumberType numberType;
-    private Integer number;
+import java.io.Serializable;
+import java.util.Objects;
 
-    public PhoneNumber(NumberType numberType, Integer number) {
+public class PhoneNumber implements Serializable {
+    private NumberType numberType;
+    private long number;
+
+    public PhoneNumber(NumberType numberType, long number) {
         this.numberType = numberType;
         this.number = number;
     }
@@ -17,11 +20,25 @@ public class PhoneNumber {
         this.numberType = numberType;
     }
 
-    public Integer getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(long number) {
         this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PhoneNumber)) return false;
+        PhoneNumber that = (PhoneNumber) o;
+        return getNumber() == that.getNumber() &&
+                getNumberType() == that.getNumberType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNumberType(), getNumber());
     }
 }
