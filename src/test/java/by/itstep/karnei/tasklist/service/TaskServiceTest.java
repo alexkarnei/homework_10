@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class TaskServiceTest {
 
-    TaskServiceInterface serviceInterface = new TaskService();
+   private TaskServiceInterface serviceInterface = new TaskService();
 
     @Test
     public void testPositiveAddTask() throws IOException, ClassNotFoundException {
