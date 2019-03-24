@@ -11,22 +11,25 @@ public class TaskService implements TaskServiceInterface {
     private File file = new File(FILE_NAME);
 
     public void addTaskToFile(Task task) throws IOException, ClassNotFoundException, TaskAlreadyExistException {
-        if (!file.exists()) {
+        if (file.exists()) {
+            if (file.length() != 0) {
+                ArrayList<Task> taskArrayList = getTasks();
+                for (Task task1 : taskArrayList) {
+                    if (task1.equals(task)) {
+                        throw new TaskAlreadyExistException();
+                    } else {
+                        recordTask(task);
+                    }
+                }
+            }
+        } else {
             file.createNewFile();
             recordTask(task);
-        } else if (file.length() != 0) {
-            ArrayList<Task> taskArrayList = getTasks();
-            for (Task e : taskArrayList) {
-                if (e.equals(task)) {
-                    throw new TaskAlreadyExistException();
-                }
-                recordTask(task);
-            }
-        } else recordTask(task);
+        }
     }
 
     private void recordTask(Task task) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME, true);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(task);
         objectOutputStream.flush();
@@ -34,6 +37,7 @@ public class TaskService implements TaskServiceInterface {
     }
 
     private ArrayList<Task> getTasks() throws IOException, ClassNotFoundException {
+
         FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
         ArrayList<Task> taskList = new ArrayList<>();
         try {

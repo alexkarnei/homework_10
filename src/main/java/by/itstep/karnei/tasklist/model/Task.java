@@ -2,7 +2,6 @@ package by.itstep.karnei.tasklist.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,7 +14,7 @@ public class Task implements Serializable {
     private Executor executor;
     private PerformanceMark performanceMark;
 
-    public  Task()  {
+    public Task() {
     }
 
     public Task(String headline
@@ -96,12 +95,12 @@ public class Task implements Serializable {
         return "Task{" +
                 "headline='" + headline + '\'' +
                 ", description='" + description + '\'' +
-                ", priority=" + priority +
+                ", priority=" + priority.getString() +
                 ", dateOfCreation=" + new SimpleDateFormat("dd.MM.yy").format(dateOfCreation) +
                 ", dateOfEnd=" + new SimpleDateFormat("dd.MM.yy").format(dateOfEnd) +
                 ", executor=" + executor +
-                ", performanceMark=" + performanceMark +
-                '}';
+                ", performanceMark=" + performanceMark.getString() +
+                '}'+"\n";
     }
 
     @Override

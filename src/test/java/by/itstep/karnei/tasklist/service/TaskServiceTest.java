@@ -9,26 +9,35 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class TaskServiceTest {
 
     TaskServiceInterface serviceInterface = new TaskService();
+
     @Test
     public void testPositiveAddTask() throws IOException, ClassNotFoundException {
 
         Task task = new Task("Налоги"
                 , "Оплата налогов"
-                , Priority.URGENT_AND_IMPORTANT
+                , Priority.NOT_URGENT_BUT_IMPORTANT
                 , new Date(2019, 3, 20)
                 , new Date(2019, 3, 22)
                 , new Executor("Анна", "Иванова", "Главный бухгалтер")
                 , PerformanceMark.SCHEDULED);
 
+        Task task1 = new Task("Зарплата"
+                , "Выплата зарплаты"
+                , Priority.URGENT_AND_IMPORTANT
+                , new Date(2019, 2, 15)
+                , new Date(2019, 2, 15)
+                , new Executor("Инна", "Афнасьева", "Бухгалтер")
+                , PerformanceMark.DONE);
+
         try {
             serviceInterface.addTaskToFile(task);
+            serviceInterface.addTaskToFile(task1);
         } catch (TaskAlreadyExistException e) {
         }
     }
@@ -36,12 +45,10 @@ public class TaskServiceTest {
     @Test(expected = TaskAlreadyExistException.class)
     public void testNegativeAddTask() throws TaskAlreadyExistException, IOException, ClassNotFoundException {
 
-        TaskServiceInterface serviceInterface = new TaskService();
-
         Task task = new Task("Налоги"
                 , "Оплата налогов"
-                , Priority.URGENT_AND_IMPORTANT
-                , new Date(2019,3,20)
+                , Priority.NOT_URGENT_BUT_IMPORTANT
+                , new Date(2019, 3, 20)
                 , new Date(2019, 3, 22)
                 , new Executor("Анна", "Иванова", "Главный бухгалтер")
                 , PerformanceMark.SCHEDULED);
@@ -52,7 +59,7 @@ public class TaskServiceTest {
     @Test
     public void testReadTask() throws IOException, ClassNotFoundException {
         ArrayList<Task> taskArrayList = serviceInterface.readTasksFromFile();
-        Assert.assertEquals(1,taskArrayList.size());
+        Assert.assertEquals(2, taskArrayList.size());
         System.out.println(taskArrayList);
     }
 }
