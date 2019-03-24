@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class PhoneNumber implements Serializable {
     private NumberType numberType;
-    private long number;
+    private String number;
 
-    public PhoneNumber(NumberType numberType, long number) {
+    public PhoneNumber(NumberType numberType, String number) {
         this.numberType = numberType;
         this.number = number;
     }
@@ -20,12 +20,18 @@ public class PhoneNumber implements Serializable {
         this.numberType = numberType;
     }
 
-    public long getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(long number) {
+    public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "numberType=" + numberType +
+                ", number=" + number;
     }
 
     @Override

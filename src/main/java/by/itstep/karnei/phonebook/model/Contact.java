@@ -3,19 +3,25 @@ package by.itstep.karnei.phonebook.model;
 import java.io.Serializable;
 import java.util.*;
 
-public  class Contact implements Serializable{
+public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
     private String surname;
     private String nickName;
-    private List <PhoneNumber> phoneNumber;
+    private List<PhoneNumber> phoneNumber;
     private int bornYear;
     private String eMail;
 
     public Contact() {
     }
 
-    public  Contact(String name, String surname, String nickName, List<PhoneNumber> phoneNumber, int bornYear, String eMail) {
+    public Contact(String name
+            , String surname
+            , String nickName
+            , List<PhoneNumber> phoneNumber
+            , int bornYear
+            , String eMail) {
+
         this.name = name;
         this.surname = surname;
         this.nickName = nickName;
@@ -70,6 +76,25 @@ public  class Contact implements Serializable{
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Contact)) return false;
+        Contact contact1 = (Contact) o;
+        return getBornYear() == contact1.getBornYear() &&
+                getName().equals(contact1.getName()) &&
+                getSurname().equals(contact1.getSurname()) &&
+                getNickName().equals(contact1.getNickName()) &&
+                getPhoneNumber().equals(contact1.getPhoneNumber()) &&
+                geteMail().equals(contact1.geteMail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getSurname(), getNickName(), getPhoneNumber(), getBornYear(), geteMail());
     }
 
     @Override
