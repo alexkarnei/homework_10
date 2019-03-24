@@ -6,15 +6,18 @@ import by.itstep.karnei.tasklist.model.PerformanceMark;
 import by.itstep.karnei.tasklist.model.Priority;
 import by.itstep.karnei.tasklist.model.Task;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TaskServiceTest {
 
-   private TaskServiceInterface serviceInterface = new TaskService();
+    private TaskServiceInterface serviceInterface = new TaskService();
 
     @Test
     public void testPositiveAddTask() throws IOException, ClassNotFoundException {
@@ -57,9 +60,16 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void testReadTask() throws IOException, ClassNotFoundException {
+    public void testPositiveReadTask() throws IOException, ClassNotFoundException {
         ArrayList<Task> taskArrayList = serviceInterface.readTasksFromFile();
         Assert.assertEquals(2, taskArrayList.size());
+        System.out.println(taskArrayList);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testNegativeReadTask() throws IOException, ClassNotFoundException {
+        ArrayList<Task> taskArrayList = serviceInterface.readTasksFromFile();
+        Assert.assertEquals(3, taskArrayList.size());
         System.out.println(taskArrayList);
     }
 }
