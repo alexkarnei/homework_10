@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class PhoneBookService implements PhoneBookServiceInterface {
 
-    private static final String FILE_NAME = "phonebook.txt";
+    private static final String FILE_NAME = "phonebook.dat";
     private File file = new File(FILE_NAME);
     private static final String EMAIL_PATTERN =
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +

@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TaskService implements TaskServiceInterface {
-    private static final String FILE_NAME = "tasklist.txt";
+    private static final String FILE_NAME = "tasklist.dat";
     private File file = new File(FILE_NAME);
 
     public void addTaskToFile(Task task) throws IOException, ClassNotFoundException, TaskAlreadyExistException {

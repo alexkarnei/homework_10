@@ -20,7 +20,7 @@ public class TaskServiceTest {
     private TaskServiceInterface serviceInterface = new TaskService();
 
     @Test
-    public void testPositiveAddTask() throws IOException, ClassNotFoundException {
+    public void addTaskPositiveTest() throws IOException, ClassNotFoundException {
 
         Task task = new Task("Налоги"
                 , "Оплата налогов"
@@ -46,7 +46,7 @@ public class TaskServiceTest {
     }
 
     @Test(expected = TaskAlreadyExistException.class)
-    public void testNegativeAddTask() throws TaskAlreadyExistException, IOException, ClassNotFoundException {
+    public void addTaskTestNegative() throws TaskAlreadyExistException, IOException, ClassNotFoundException {
 
         Task task = new Task("Налоги"
                 , "Оплата налогов"
@@ -60,14 +60,14 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void testPositiveReadTask() throws IOException, ClassNotFoundException {
+    public void readTaskPositiveTest() throws IOException, ClassNotFoundException {
         ArrayList<Task> taskArrayList = serviceInterface.readTasksFromFile();
         Assert.assertEquals(2, taskArrayList.size());
         System.out.println(taskArrayList);
     }
 
     @Test(expected = AssertionError.class)
-    public void testNegativeReadTask() throws IOException, ClassNotFoundException {
+    public void readTaskTestNegative() throws IOException, ClassNotFoundException {
         ArrayList<Task> taskArrayList = serviceInterface.readTasksFromFile();
         Assert.assertEquals(3, taskArrayList.size());
         System.out.println(taskArrayList);
