@@ -2,7 +2,7 @@ package by.itstep.karnei.calculator.service;
 
 import by.itstep.karnei.calculator.exception.DivisionByZeroException;
 import by.itstep.karnei.calculator.exception.IllegalArgumentException;
-import by.itstep.karnei.calculator.exception.InvalidNumberOfArgumуntsOperationException;
+import by.itstep.karnei.calculator.exception.InvalidNumberOfArgumentsOperationException;
 import by.itstep.karnei.calculator.model.Calculator;
 import by.itstep.karnei.calculator.model.MathOperation;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class CalculateServiceTest {
     public void testPositiveCalculate() throws IOException
             , DivisionByZeroException
             , IllegalArgumentException
-            , InvalidNumberOfArgumуntsOperationException {
+            , InvalidNumberOfArgumentsOperationException {
 
         Calculator calculator = new Calculator(60, 20, MathOperation.DIVISION);
         Calculator calculator1 = new Calculator(256, MathOperation.SQUARE_ROOT);
@@ -35,8 +35,8 @@ public class CalculateServiceTest {
         calculateInterface.calculate(calculator5);
     }
 
-    @Test(expected = InvalidNumberOfArgumуntsOperationException.class)
-    public void testNegativeCalculateCalculatorConstructorSquareRoot() throws InvalidNumberOfArgumуntsOperationException
+    @Test(expected = InvalidNumberOfArgumentsOperationException.class)
+    public void testNegativeCalculateCalculatorConstructorSquareRoot() throws InvalidNumberOfArgumentsOperationException
             , DivisionByZeroException
             , IllegalArgumentException
             , IOException {
@@ -45,8 +45,8 @@ public class CalculateServiceTest {
 
     }
 
-    @Test(expected = InvalidNumberOfArgumуntsOperationException.class)
-    public void testNegativeCalculateCalculatorConstructor() throws InvalidNumberOfArgumуntsOperationException
+    @Test(expected = InvalidNumberOfArgumentsOperationException.class)
+    public void testNegativeCalculateCalculatorConstructor() throws InvalidNumberOfArgumentsOperationException
             , DivisionByZeroException
             , IllegalArgumentException
             , IOException {
@@ -59,7 +59,7 @@ public class CalculateServiceTest {
     @Test
     public void testNegativeWithDivisionByZeroException() throws IllegalArgumentException
             , IOException
-            , InvalidNumberOfArgumуntsOperationException {
+            , InvalidNumberOfArgumentsOperationException {
         Calculator calculator = new Calculator(60, 0, MathOperation.DIVISION);
         try {
             calculateInterface.calculate(calculator);
@@ -70,7 +70,7 @@ public class CalculateServiceTest {
     @Test(expected = IllegalArgumentException.class)
     public void testNegativeWithInvalidArgumentException() throws IllegalArgumentException
             , IOException
-            , InvalidNumberOfArgumуntsOperationException
+            , InvalidNumberOfArgumentsOperationException
             , DivisionByZeroException {
         Calculator calculator1 = new Calculator(0, MathOperation.SQUARE_ROOT);
         calculateInterface.calculate(calculator1);
