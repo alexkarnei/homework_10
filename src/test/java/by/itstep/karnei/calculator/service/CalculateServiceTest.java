@@ -7,12 +7,13 @@ import by.itstep.karnei.calculator.model.Calculator;
 import by.itstep.karnei.calculator.model.MathOperation;
 import org.junit.Test;
 
+
 import java.io.IOException;
+
 
 public class CalculateServiceTest {
 
     private CalculateInterface calculateInterface = new Calculate();
-
 
     @Test
     public void testPositiveCalculate() throws IOException
