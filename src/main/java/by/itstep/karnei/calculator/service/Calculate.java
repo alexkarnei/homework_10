@@ -106,7 +106,6 @@ public class Calculate implements CalculateInterface {
 
     private BigDecimal mathSqrt(Calculator calculator) throws IllegalArgumentException {
         int x = calculator.getVariableNumber();
-//        int y = calculator.getHowMuchIsСhanging();
         if (x <= 0 ) {
             throw new IllegalArgumentException();
         }
