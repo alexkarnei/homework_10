@@ -8,20 +8,20 @@ import by.itstep.karnei.calculator.model.MathOperation;
 import org.junit.Test;
 
 
-import java.io.IOException;
 
+import java.io.IOException;
 
 public class CalculateServiceTest {
 
     private CalculateInterface calculateInterface = new Calculate();
+
 
     @Test
     public void testPositiveCalculate() throws IOException
             , DivisionByZeroException
             , IllegalArgumentException
             , InvalidNumberOfArgumentsOperationException {
-
-        Calculator calculator = new Calculator(60, 20, MathOperation.DIVISION);
+        Calculator calculator = new Calculator(60,20,MathOperation.DIVISION);
         Calculator calculator1 = new Calculator(256, MathOperation.SQUARE_ROOT);
         Calculator calculator2 = new Calculator(256, 26, MathOperation.SUBTRACTION);
         Calculator calculator3 = new Calculator(2, 8, MathOperation.EXPONENTIATION);
